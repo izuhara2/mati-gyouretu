@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ens">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/Figure.js" defer></script>
+    <script src="/js/mati-gyouretu.js" defer></script>
+    <script src="/js/Customer.js" defer></script>
+    <script src="/js/List.js" defer></script>
+    <script src="/js/Register.js" defer></script>
+    <script src="/js/Shop.js" defer></script>
+    <link rel="stylesheet" href="/css/sample.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="title1"><h1>待ち行列問題シミュレータ</h1></div>
+    <div class="layout_up"> 
+        <div class="left">
+            <h2>窓口の平均処理時間（分）:<div id="processing_time"></div><h2>
+            <input type = "range" id = "slider1" class="slider_sample1" min="1" max="10" value="1" list="tickmarks">
+            <datalist id="tickmarks">
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+                <option value="4"></option>
+                <option value="5"></option>
+                <option value="6"></option>
+                <option value="7"></option>
+                <option value="8"></option>
+                <option value="9"></option>
+                <option value="10"></option>
+            </datalist>
+
+            <h2>処理時間のばらつき（標準偏差）:<div id="deviation"></div></h2>
+            <input type = "range" id = "slider2" class="slider_sample1" min="0" max="1" value="0" step="0.1" list="tickmarks1">
+            <datalist id="tickmarks1">
+                <option value="0"></option>
+                <option value="0.1"></option>
+                <option value="0.2"></option>
+                <option value="0.3"></option>
+                <option value="0.4"></option>
+                <option value="0.5"></option>
+                <option value="0.6"></option>
+                <option value="0.7"></option>
+                <option value="0.8"></option>
+                <option value="0.9"></option>
+                <option value="1.0"></option>
+            </datalist>
+
+            <div class="button">
+                <div id="button_str">
+                    <input type="button" value="START" id="str" class="example1" onclick="main()">
+                </div>
+                <div id="button_pau">
+                    <input type="button" value="PAUSE" id="pau" class="example1">
+                </div>
+                <div id="button_cle">
+                    <input type="button" value="CLEAR" id="cle" class="example1">
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <h2>流れ密度:<div id="flow"></div></h2>
+            <input type = "range" id = "slider3" class="slider_sample1" min="0" max="1.0" value="0" step="0.1" list="tickmarks1">
+    
+            <canvas width="550px" height="300px" id="graph"></canvas>
+        </div>
+    </div>
+    
+    <div class="animation">
+        <canvas width="1980" height="300" id="anime"></canvas>
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer1">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer2">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer3">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer4">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer5">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer6">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer7">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer8">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer9">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer10">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer11">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer12">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer13">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer14">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer15">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer16">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer17">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer18">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer19">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer20">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer21">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer22">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer23">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer24">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer25">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer26">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer27">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer28">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer29">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer30">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer31">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer32">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer33">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer34">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer35">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer36">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer37">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer38">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer39">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer40">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer41">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer42">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer43">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer44">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer45">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer46">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer47">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer48">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer49">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer50">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer51">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer52">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer53">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer54">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer55">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer56">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer57">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer58">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer59">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer60">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer61">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer62">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer63">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer64">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer65">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer66">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer67">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer68">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer69">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer70">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer71">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer72">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer73">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer74">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer75">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer76">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer77">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer78">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer79">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer80">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer81">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer82">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer83">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer84">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer85">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer86">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer87">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer88">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer89">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer90">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer91">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer92">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer93">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer94">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer95">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer96">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer97">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer98">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer99">
+        <img src="/img/customer_man.jpg" alt="" class="customer" id="customer100">
+    </div>
+</body>
+</html>
