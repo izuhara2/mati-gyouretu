@@ -75,4 +75,3 @@ class Shop {
         this._rew = this._list.process(time);
     }
 }
-process();
