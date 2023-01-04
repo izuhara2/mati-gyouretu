@@ -64,6 +64,7 @@ class Shop {
                 if (this._list.getLength() > 0) {
                     // 客を移動（待ち行列→レジ）
                     //register.push(this._rew, this._list.shift());
+                    /**追加プログラム */
                     let customer = this_list.shift();
                     customer.move(register.id)
                     this_list.move();
