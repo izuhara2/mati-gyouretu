@@ -59,9 +59,14 @@ h1 {
     -moz-transition-timing-function: ease-in-out;
 }
 
-#customer1 {
-    left: 610px;
+#customer0 {
+    left: 540px;
     top: 580px;
+}
+
+#customer1 {
+    left: 540px;
+    top: 500px;
 }
 
 #customer2 {

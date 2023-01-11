@@ -16,6 +16,19 @@ class Customer {
         this.sigma = sigma;
         this.delta = delta;
     }
+    /**
+     * 客をレジの前に移動させる
+     * @param {number} id - レジ番号
+     */
+    move(id) {
+        const regi_enter = { //客が窓口でサービスを受ける座標
+            x: [60, 170, 280, 390, 500, 610, 720, 830, 940, 1050],
+            y: [650, 650, 650, 650, 650, 650, 650, 650, 650]
+        }
+        document.querySelector('#customer' + id).style.left = `${regi_enter.x[id]}px`;;
+        document.querySelector('#customer' + id).style.top = `${regi_enter.y[id]}px`;;
+    }
+
 
     /**
      * 内部的に時間を進める

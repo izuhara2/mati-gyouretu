@@ -33,6 +33,19 @@ class List {
         return this._list.shift();
     }
 
+     /**
+     * 行列を移動させる
+     * @param {number}  - 
+     */
+     move_gyouretu(id){
+        const retu_location = {
+            x: [610, 610, 680, 750, 820, 890, 970, 1040, 1110, 1170, 1240, 1310, 1380, 1450, 1520, 1590, 1660, 1730, 1800, 1870],
+            y: [580, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500]
+        }
+        document.querySelector('#customer' + id + 1).style.left = `${retu_location.x[id]}px`;;
+        document.querySelector('#customer' + id + 1).style.top = `${retu_location.y[id]}px`;;
+    }
+
     /**
      * 内部的に時間を進める
      * @param {number} time - 経過させる単位時間
