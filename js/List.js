@@ -37,13 +37,18 @@ class List {
      * 行列を移動させる
      * @param {number}  - 
      */
-     move_gyouretu(id){
-        const retu_location = {
-            x: [610, 610, 680, 750, 820, 890, 970, 1040, 1110, 1170, 1240, 1310, 1380, 1450, 1520, 1590, 1660, 1730, 1800, 1870],
-            y: [580, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500]
+     move_gyouretu(){
+        let xxx = this._list;
+        console.log({xxx});
+        for( let i=this._list.length-1; i>0; i-- ) {
+            this._list[i].img.style.left = this._list[i-1].img.style.left;
         }
-        document.querySelector('#customer' + id + 1).style.left = `${retu_location.x[id]}px`;;
-        document.querySelector('#customer' + id + 1).style.top = `${retu_location.y[id]}px`;;
+        // const retu_location = {
+        //     x: [610, 610, 680, 750, 820, 890, 970, 1040, 1110, 1170, 1240, 1310, 1380, 1450, 1520, 1590, 1660, 1730, 1800, 1870],
+        //     y: [580, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500]
+        // }
+        // document.querySelector('#customer' + id + 1).style.left = `${retu_location.x[id]}px`;;
+        // document.querySelector('#customer' + id + 1).style.top = `${retu_location.y[id]}px`;;
     }
 
     /**
@@ -53,8 +58,9 @@ class List {
     process(time) {
         let rew = this._next -= time;
         if (this._next <= 0) {
-            this._list.push( new Customer( this._average, this._sigma ) );
+            this._list.push( new Customer( this._average, this._sigma, this._list.length, 500 ) );
             this._next += this.poison(); // 次の客が来るまでの時間を設定
+
             return rew;
         }
         return 0;

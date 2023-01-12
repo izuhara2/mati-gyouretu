@@ -59,6 +59,19 @@ h1 {
     -moz-transition-timing-function: ease-in-out;
 }
 
+#content_area{
+    position: absolute;
+    height: 60px;
+    width: 80px;
+    position: absolute;
+    transition-property: all;
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
+    -moz-transition-property: all;
+    -moz-transition-duration: 2s;
+    -moz-transition-timing-function: ease-in-out;
+}
+
 #customer0 {
     left: 540px;
     top: 580px;

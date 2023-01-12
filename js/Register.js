@@ -5,8 +5,10 @@ class Register {
     /**
      * コンストラクタ
      * @param {number} id - レジID
+     * @param {string} x - レジの客の座標
+     * @param {string} y - レジの客の座標
      */
-    constructor(id) {
+    constructor(id, x, y) {
         /**
          * レジID
          * @type {number}
@@ -25,6 +27,8 @@ class Register {
         /**
          * 
          */
+        this.x = x;
+        this.y = y;
         this.remain = 0;
     }
 
@@ -36,6 +40,9 @@ class Register {
         if (this._progress != null) {
             let remain = this._progress.process(time);
             if (remain <= 0) {
+                let xxx = this._progress;
+                console.log({xxx});
+                this._progress.img.top = '1000px';
                 this._progress = null;
                 return remain;
             }
@@ -59,5 +66,7 @@ class Register {
         if (this.remain < 0) customer.process(-this.remain);
         else customer.process(-rew);
         this._progress = customer;
+        customer.img.style.left = this.x;
+        customer.img.style.top = this.y;
     }
 }

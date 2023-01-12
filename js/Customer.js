@@ -6,8 +6,10 @@ class Customer {
      * コンストラクタ
      * @param {number} delta - (客の)処理時間の平均値
      * @param {number} sigma - 処理時間の標準偏差
+     * @param {number} number - 待ち行列内の順序
+     * @param {number} y - 待ち行列のY座乗
      */
-    constructor(delta, sigma) {
+    constructor(delta, sigma, number, y) {
         /**
          * 処理時間の残り
          * @type {number}
@@ -15,6 +17,17 @@ class Customer {
         this._remain = Customer.gauss(delta, sigma); // 本当は平均時間とσから処理時間を計算する
         this.sigma = sigma;
         this.delta = delta;
+
+        // img要素を生成(客のimgを生成)
+       this.img = document.createElement('img');
+        // 画像パスを追加
+        this.img.src = "/img/customer_man.jpg";
+        // 指定した要素にimg要素を挿入
+        let content_area = document.querySelector("#animation");
+        content_area.appendChild(this.img);
+        this.img.classList.add('customer');
+        this.img.style.left = `${610 + number * 70}px`;
+        this.img.style.top = '500px';
     }
     /**
      * 客をレジの前に移動させる
@@ -25,8 +38,8 @@ class Customer {
             x: [60, 170, 280, 390, 500, 610, 720, 830, 940, 1050],
             y: [650, 650, 650, 650, 650, 650, 650, 650, 650]
         }
-        document.querySelector('#customer' + id).style.left = `${regi_enter.x[id]}px`;;
-        document.querySelector('#customer' + id).style.top = `${regi_enter.y[id]}px`;;
+        this._img.style.left = `${regi_enter.x[id]}px`;;
+        this._img.style.top = `${regi_enter.y[id]}px`;;
     }
 
 
