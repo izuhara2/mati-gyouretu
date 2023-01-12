@@ -53,20 +53,13 @@
 const anime = document.querySelector('#anime');
 const madogui = anime.getContext('2d');
 madogui.strokeRect(60, 225, 80, 80);//窓口0
-make.addEventListener( 'click', ev => {
-    // ここで描画する
-    let madoguti_number = document.querySelector("#madoguti").value;
-    
-for(i = 0; i<=madoguti_number; i++){
-    madogui.strokeRect(170 + 70 * i, 225, 80, 80);
-}
-})
-
-
-// madogui.strokeRect(500, 100, 80, 80);//窓口4
-// madogui.strokeRect(610, 100, 80, 80);//窓口5
-// madogui.strokeRect(720, 100, 80, 80);//窓口6
-// madogui.strokeRect(830, 100, 80, 80);//窓口7
-// madogui.strokeRect(940, 100, 80, 80);//窓口8
-// madogui.strokeRect(1050, 100, 80, 80);//窓口9
+madogui.strokeRect(170, 225, 80, 80);//窓口1
+madogui.strokeRect(280, 225, 80, 80);//窓口2
+madogui.strokeRect(390, 225, 80, 80);//窓口3
+madogui.strokeRect(500, 225, 80, 80);//窓口4
+madogui.strokeRect(610, 225, 80, 80);//窓口5
+madogui.strokeRect(720, 225, 80, 80);//窓口6
+madogui.strokeRect(830, 225, 80, 80);//窓口7
+madogui.strokeRect(940, 225, 80, 80);//窓口8
+madogui.strokeRect(1050, 225, 80, 80);//窓口9
 
