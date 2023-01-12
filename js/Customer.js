@@ -26,7 +26,7 @@ class Customer {
         let content_area = document.querySelector("#animation");
         content_area.appendChild(this.img);
         this.img.classList.add('customer');
-        this.img.style.left = `${610 + number * 70}px`;
+        this.img.style.left = `${450 + number * 70}px`;
         this.img.style.top = '500px';
     }
     /**

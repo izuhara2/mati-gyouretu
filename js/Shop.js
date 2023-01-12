@@ -34,7 +34,7 @@ class Shop {
             x: [60, 170, 280, 390, 500, 610, 720, 830, 940, 1050],
             y: [650, 650, 650, 650, 650, 650, 650, 650, 650]
         }
-        for (let i = 0; i < number; i++) this._registers.push(new Register(i, `${regi_enter.x[i]}px`, `${regi_enter.y[i]}px`));
+        for (let i = 0; i < 10; i++) this._registers.push(new Register(i, `${regi_enter.x[i]}px`, `${regi_enter.y[i]}px`));
 
         let nl2 = new nylon();
         nl2.on('slider1', (key, value) => {
@@ -48,6 +48,9 @@ class Shop {
         nl2.on('slider3', (key, value) => {
             this.alpha = value.val;
             this._list._alpha = this.alpha;
+        });
+        nl2.on('slider4', (key, value) => {
+            this._number = value.val;
         });
     }
 
@@ -63,7 +66,7 @@ class Shop {
             }
         }
 
-        for (let register of this._registers.sort((r1, r2) => {
+        for (let register of this._registers.slice(0,this._number).sort((r1, r2) => {
             return r1.remain < r2.remain ? -1 : 1
         })) {
             // レジが空いているか?

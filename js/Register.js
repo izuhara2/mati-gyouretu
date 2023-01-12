@@ -42,7 +42,7 @@ class Register {
             if (remain <= 0) {
                 let xxx = this._progress;
                 console.log({xxx});
-                this._progress.img.top = '1000px';
+                this._progress.img.remove();
                 this._progress = null;
                 return remain;
             }
