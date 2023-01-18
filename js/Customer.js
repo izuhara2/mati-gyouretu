@@ -21,7 +21,7 @@ class Customer {
         // img要素を生成(客のimgを生成)
        this.img = document.createElement('img');
         // 画像パスを追加
-        this.img.src = "/img/customer_man.jpg";
+        this.img.src = "./img/customer_man.jpg";
         // 指定した要素にimg要素を挿入
         let content_area = document.querySelector("#animation");
         content_area.appendChild(this.img);
